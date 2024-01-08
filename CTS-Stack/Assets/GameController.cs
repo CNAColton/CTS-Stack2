@@ -6,7 +6,7 @@ using UnityEngine;
 //User Interface namespace
 using UnityEngine.UI;
 //Scene Management namespace
-using UnityEngine.SceneManagment;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
@@ -21,7 +21,6 @@ public class GameController : MonoBehaviour
     //Boolean determining if game
     //is over
     public bool Done;
-}
 
 // Update is called once per frame
 void Update()
@@ -29,7 +28,7 @@ void Update()
         //If done is true
         if(Done)
         { 
-            return value
+            //return value
             return;
         }
     //Variable time equals to the time scine game startup
@@ -37,7 +36,7 @@ void Update()
     //Variable pos1 equals last cube position
     var pos1 = lastCube.transform.position + Vector3.up * 10f;
     //Variable pos2 equals to the pos1 plus any level by number of 2
-    var pos2 = pos1 + ((CompressionLevel % 2 == 0) ? Vector3.left : Vector3.forward) * 120;
+    var pos2 = pos1 + ((Level % 2 == 0) ? Vector3.left : Vector3.forward) * 120;
     //If the level is by the number of two
     if(Level % 2 == 0)
     {
@@ -79,7 +78,7 @@ void Newblock()
             //current cubes position equals to the current cubes x position
             //last cubes y position
             //z axis position of 0.5
-            currentCube.tranform.position = Vector3.Lerp(currentCube.transform.position, lastCube.transform.position, 0.5f) + Vector3.up * 5f;
+            currentCube.transform.position = Vector3.Lerp(currentCube.transform.position, lastCube.transform.position, 0.5f) + Vector3.up * 5f;
         }
         //is less than or equal to 0 or if the
         //current cube size on the z axis is less
@@ -90,10 +89,10 @@ void Newblock()
             //Done equals to true
             Done = true;
             //Text is visible
-            text.gameObject.SetAcive(true);
+            text.gameObject.SetActive(true);
             //Text equals to the text of the Final socre
             //and which level is played
-            text.text. = "Final Score: " + Level;
+            text.text = "Final Score: " + Level;
             //Start Corountine function X
             StartCoroutine(X());
             return;
@@ -117,4 +116,11 @@ void Newblock()
         Camera.main.transform.position = currentCube.transform.position + new Vector3(100, 100, 100);
         //Camera looks at the current cube
         Camera.main.transform.LookAt(currentCube.transform.position);
+    }
+    // start is called before the first frame Update
+    void start()
+    {
+        //Call New Block function
+        Newblock();
+    }
 }
