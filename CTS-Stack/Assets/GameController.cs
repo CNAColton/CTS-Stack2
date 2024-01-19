@@ -11,15 +11,20 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour 
 {
     //Current cube game object
+    [Header("Cube Object")]
     public GameObject currentCube;
     //Last cube game object
+    [Header("Last Cube Object")]
     public GameObject lastCube;
     //Text object
+    [Header("Text Object")]
     public Text text;
     //Level number interger
+    [Header("Current Level")]
     public int Level;
     //Boolean determining if game
     //is over
+    [Header("Boolean")]
     public bool Done;
 
 // Update is called once per frame
@@ -122,5 +127,14 @@ void Newblock()
     {
         //Call New Block function
         Newblock();
+    }
+    //Ienumerator X function
+    IEnumerator X()
+    {
+        //Wait three seconds the code is
+        //executed
+        yield return new WaitForSeconds(3f);
+        //The scene sample scene is loaded
+        SceneManager.LoadScene("SampleScene");
     }
 }
