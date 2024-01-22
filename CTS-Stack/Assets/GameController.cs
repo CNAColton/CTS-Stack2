@@ -8,8 +8,7 @@ using UnityEngine.UI;
 //Scene Management namespace
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour 
-{
+public class GameController : MonoBehaviour {
     //Current cube game object
     [Header("Cube Object")]
     public GameObject currentCube;
@@ -17,7 +16,7 @@ public class GameController : MonoBehaviour
     [Header("Last Cube Object")]
     public GameObject lastCube;
     //Text object
-    [Header("Text Object")]
+    [Header("Text object")]
     public Text text;
     //Level number interger
     [Header("Current Level")]
@@ -69,7 +68,7 @@ void Newblock()
     {
         //If the last cube is not
         //destroyed
-        if(lastCube != null)
+        if (lastCube != null)
         {
             //The current cube position equals to all 3 axis positions
             //to the nearest interger
@@ -79,29 +78,31 @@ void Newblock()
             //current cubes size equals to the last cube size
             currentCube.transform.localScale = new Vector3(lastCube.transform.localScale.x - Mathf.Abs(currentCube.transform.position.x - lastCube.transform.position.x),
                                                             lastCube.transform.localScale.y,
-                                                            lastCube.transform.localScale.z - Mathf.Abs(currentCube.transform.position.z - lastCube.transform.position.z));
+                                                           lastCube.transform.localScale.z - Mathf.Abs(currentCube.transform.position.z - lastCube.transform.position.z));
             //current cubes position equals to the current cubes x position
             //last cubes y position
             //z axis position of 0.5
             currentCube.transform.position = Vector3.Lerp(currentCube.transform.position, lastCube.transform.position, 0.5f) + Vector3.up * 5f;
         }
-        //is less than or equal to 0 or if the
-        //current cube size on the z axis is less
-        //than or equal to 0
-        if (currentCube.transform.localScale.x <= 0f ||
-            currentCube.transform.localScale.z <= 0f)
-        {
-            //Done equals to true
-            Done = true;
-            //Text is visible
-            text.gameObject.SetActive(true);
-            //Text equals to the text of the Final socre
-            //and which level is played
-            text.text = "Final Score: " + Level;
-            //Start Corountine function X
-            StartCoroutine(X());
-            return;
-        }
+            //is less than or equal to 0 or if the
+            //current cube size on the z axis is less
+            //than or equal to 0
+            if (currentCube.transform.localScale.x <= 0f ||
+                currentCube.transform.localScale.z <= 0f)
+            {
+                //Done equals to true
+                Done = true;
+                //Text is visible
+                text.gameObject.SetActive(true);
+                //Text equals to the text of the Final socre
+                //and which level is played
+                text.text = "Final Score: " + Level;
+                //Start Corountine function X
+                StartCoroutine(X());
+                //Returns value
+                return;
+            }
+        
         //Last cube equals to the
         //current cube
         lastCube = currentCube;
@@ -123,12 +124,12 @@ void Newblock()
         Camera.main.transform.LookAt(currentCube.transform.position);
     }
     // start is called before the first frame Update
-    void start()
+    void Start()
     {
         //Call New Block function
         Newblock();
     }
-    //Ienumerator X function
+    //IEenumerator X function
     IEnumerator X()
     {
         //Wait three seconds the code is

@@ -6,7 +6,7 @@ MonoImporter:
   defaultReferences:
   - currentCube: {fileID: 7289764082247191826, guid: b5b6a7a2441a5454892924e774734c49, type: 3}
   - lastCube: {fileID: 7289764082247191826, guid: b5b6a7a2441a5454892924e774734c49, type: 3}
-  - text: {instanceID: 0}
+  - text: {fileID: 459312940846957153, guid: f39c49e96bca8c24c8b994731e4928b4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
